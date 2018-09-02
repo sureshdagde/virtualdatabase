@@ -1,0 +1,5 @@
+
+void RemoveDatabase()
+{
+	printf("welocm");
+}
