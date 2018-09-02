@@ -152,7 +152,6 @@ int main()
 				{
 					printf("connection not establised");
 				}
-			
 			}
 		else if(!strcmp(cmdword[0],"create")  && !strcmp(cmdword[1],"c"))
 			{
