@@ -121,7 +121,6 @@ int main()
 				{
 					printf("connection not establised");
 				}
-			
 			}
 
 		else if(!strcmp(cmdword[0],"show") && !strcmp(cmdword[1],"dbs") && CommandWordLength==1)
