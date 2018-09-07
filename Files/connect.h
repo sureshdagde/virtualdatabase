@@ -18,11 +18,10 @@ int ConnectDB()
 		fscanf(fp,"%s[^\n]",zero);
 		fscanf(fp,"%s[^\n]",oldusername);
 		fscanf(fp,"%s[^\n]",oldpassword);
-		printf("%s",oldusername);
-		printf("\n%s",oldpassword);
+		
 		if(!strcmp(username,oldusername) && !strcmp(password,oldpassword))
 		{
-			printf("connection establised succesfully\n");
+			printf("\nconnection establised succesfully\n");
 			return 1;
 		}
 printf("could not connect");

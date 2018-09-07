@@ -15,9 +15,9 @@ void CreateDatabase(const char *name)
 		
 		
 		#ifdef __linux__
-		mkdir(dir,777);
+		mkdir(dir,0777);
 		#else
-		_mkdir(dir);
+		_mkdir(dir,0777);
 		#endif
 		printf("folder create succesfully");
 		}

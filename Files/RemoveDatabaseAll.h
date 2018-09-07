@@ -1,0 +1,4 @@
+void RemoveDatabaseAll()
+{
+	//PAIDDING
+}
