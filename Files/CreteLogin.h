@@ -1,6 +1,6 @@
 CreteLogin(char *UserName,char *password)
 {
-	static int i,done=1;
+	 int done=1;
 	char rcu[20],rcp[20];
 	FILE *fp;
 	int check1,check2;
