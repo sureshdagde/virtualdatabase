@@ -1,7 +1,7 @@
 int ChangeLogin()
 {
 	char username[20];
-	char password[20];
+	//char password[20];
 	char newusername[20];
 	char newpassword[20];
 	char oldusername[20];
@@ -9,15 +9,17 @@ int ChangeLogin()
 	char rcu[20],rcp[20];
 	char zero[2];
 	int done=1;
-	printf("enter the old username--->\n");
+	printf("enter the old username:");
 	gets(username);
-	printf("enter the old password--->\n");
-	gets(password);
+	printf("\nenter the old password:");
+	//gets(password);
+	char *password=getpass("");
 	FILE *fp;
-	fp=fopen("/home/suresh/Desktop/searcer/Database/login.txt","r+");
+	fp=fopen("/home/suresh/Desktop/searcer/system/login.txt","r+");
 	if(fp==NULL)
 	{
 		printf("could not open");
+		system("notify-send 'Error' 'could not open' ");
 	}
 		fscanf(fp,"%s[^\n]",zero);
 		fscanf(fp,"%s[^\n]",oldusername);
@@ -27,38 +29,51 @@ int ChangeLogin()
 	if(!strcmp(username,oldusername) && !strcmp(password,oldpassword))
 	{
 			printf("\nyou can change\n");
-			
+			system("notify-send 'Welocme' 'you can change' ");
 
 		while(done)
 		{
 
 			
-			printf("enter the new username---->");
+			printf("enter the new username:");
 			gets(newusername);
 			if(strlen(newusername)<=4)
 				{
 					printf("Error-->UserName must be greter then 4 character\n");
-
+					system("notify-send 'Error' 'UserName must be greter then 4 character' ");
 					continue;
 				}
 			
-			printf("enter the new password---->");
-			gets(newpassword);
+			printf("\nenter the new password:");
+			//gets(newpassword);
+			char *newpassword=getpass("");
+			//printf("-->%s--",newpassword);
 			    if(strlen(newpassword)<=4)
 				{
 					printf("Error-->password must be greter then 4 character\n");
 					printf("NOTE-->please enter username again\n");
+					system("notify-send 'Error' 'please enter username again'");
 					continue;
 				}
 				printf("conform the UserName and Password\n");
-				printf("Confermation--enter the UserName--->");
+				printf("Confermation:enter the UserName:");
 				gets(rcu);
-				printf("Confermation--enter the password--->");
-				gets(rcp);
-				
-				if(!strcmp(newusername,rcu) && !strcmp(newpassword,rcp))
+				if(!strcmp(newusername,rcu))
 				{
-					fp=fopen("/home/suresh/Desktop/searcer/Database/login.txt","w+");
+				printf("Confermation:enter the password:");
+				fflush(stdin);
+				char *rcp=getpass("");
+				}
+				else
+				{
+					printf("not match\n");
+					system("notify-send 'Error' 'Not Match'");
+					continue;
+				}
+			//	printf("------------>%s------%s-------",rcp,newpassword);
+				if(strcmp(newpassword,rcp))
+				{
+					fp=fopen("/home/suresh/Desktop/searcer/system/login.txt","w+");
 					fprintf(fp,"%d",0);
 					fprintf(fp,"%d",1);
 					fprintf(fp,"%s","\n");
@@ -67,10 +82,12 @@ int ChangeLogin()
 					fprintf(fp,"%s",newpassword);
 					fclose(fp);
 					done=0;
+					printf("login changed successfully\n");
 				}
 				else
 				{
 					printf("Not Match please create login again\n");
+					system("notify-send 'Error' 'Not Match please create login again'");
 				}
 		}
 

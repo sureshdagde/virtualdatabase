@@ -8,7 +8,7 @@ main()
 	int i=0,j=0;
 	char p[30][50];
 	char c;
-	FILE *fp=fopen("/home/suresh/Desktop/searcer/Files/s1.txt","a+");
+	FILE *fp=fopen("/home/suresh/Desktop/searcer/Database/abc/vv.txt","a+");
 	if(fp==NULL)
 		{printf("fsdf");}
 	else{
@@ -17,7 +17,7 @@ main()
 	
 		while(i<3)
 		{
-			while((c=fgetc(fp))!='\t')
+			while((c=fgetc(fp))!='\n')
 			{	
 				p[i][j]=c;
 				j++;

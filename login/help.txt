@@ -1,0 +1,13 @@
+> create login : create login for user database [NOTE  :you need to remember the login to use the database servises ] ;
+> change login : to change the login [NOTE  :you can not change thethe login withaout the previouse login ;
+> connect : to connect the database ;
+> disconnect : to diasonnect the connection;
+> ceate db Database_Name : used to create the database (must be not duplicate ;
+> show dbs : used to show the all list of database ;
+> use db Database_Name : used to mount(select) the database;
+> show c : used to show all list of collection in current database but need to mount database ;	
+> rm db database_name : used to remove database ;
+> rm all db database_name : used to all remove database ;
+> rm c collection_name : used to remove collection ;
+> rm c all collection_name : used to remove all collection ;
+> exit : used to exit ;

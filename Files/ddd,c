@@ -1,0 +1,8 @@
+#include<stdio.h>
+main()
+{
+	const *run="cc program.c";
+	const
+	system()
+
+}

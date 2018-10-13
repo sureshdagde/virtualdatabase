@@ -1,7 +1,0 @@
-0
-3
-number	name	salary	
-131	suresh	500	
-131	suresh	500	
-131	suresh	500	
-{number:131,name:suresh,salary:500}

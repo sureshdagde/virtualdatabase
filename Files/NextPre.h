@@ -120,6 +120,13 @@ void ShowAll(struct stack_t *theStack)
 /**
  * Get the value at the top of the stack
  */
+ int CheckNULL(struct stack_t *theStack)
+ {
+  if (theStack->head == NULL)
+  {return 1;}
+  else
+    {return 0;}
+ }
 char *top(struct stack_t *theStack)
 {
 
@@ -139,6 +146,12 @@ char *catchdata(struct stack_t *theStack)
     //free(tmp->data);
     //free(tmp);
     //theStack->stackSize--;
+  }
+  else
+  {
+     struct stack_entry *tmp = "empty";
+     //theStack->head = theStack->head->next;
+    return tmp;
   }
 }
 /**
@@ -165,6 +178,7 @@ void RemoveAll (struct stack_t *theStack)
 {
   while (theStack->head != NULL)
     pop(theStack);
+  printf("clear history\n");
 }
 
 /**

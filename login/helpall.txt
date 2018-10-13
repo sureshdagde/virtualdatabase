@@ -1,0 +1,183 @@
+1)create login end
+	
+		Create the login to your database.[must be need to login to database]; end
+		Example end
+		You can change the login. end
+		>>create login end
+		NOTE:screate the login and must be remember the username and password end
+		enter the UserName:suresh end   
+		enter the password: end
+		conform the UserName and Password end
+		Confermation:enter the UserName:suresh end
+		Confermation:enter the password: end
+		Your Login Created Succesfully end end
+2)change login end
+
+		Change the login [username,password] end
+		Example end
+		>>change login end
+		enter the old username:suresh end 
+
+		enter the old password: end
+
+		you can change end
+		enter the new username:fergusson end
+
+		enter the new password: end
+		conform the UserName and Password end
+		Confermation:enter the UserName:fergusson end
+		Confermation:enter the password: end
+		login changed successfully  end end
+
+
+
+
+3)connect end
+		Database Connectivity,Login to use searcher ‘s(database) servise end
+		Example end
+		>>connect end
+		enter the  username:fergusson end
+
+		enter the password:________ end
+
+		connection establised succesfully end end
+4)disconnect end
+		Disconnect Database Connectivity. end
+		Example end
+		>>disconnect end
+		disconnected end end
+5)help end
+		Syntax and command help end
+		Example end
+		>>help end
+
+		1)create login                            -->	 create login for user database end
+		[NOTE:you need to remember the login to connect the database ] end
+		2)change login                            -->	 to change the login [NOTE:you can end not change 		the login withaout the previouse login end
+		.............and much more end end
+6)help any_syntax  end
+		Help related to specific command end
+		Example end
+		>>help connect end
+		connect : to connect the database ; end
+7)create db db_name end
+		create the new database end
+		Example end
+		>>create db Bank end
+		Database created succesfully end
+8)show dbs end
+                      Dispay the all databases,If you want to check your databases list, end use the command 	          show dbs. end
+	          Example end
+                       >>show dbs end
+		Bank end
+9)use DATABASE_NAME end
+		If you want to create a database with name <Teacher>, then use DATABASE  end			statement end
+		would be as follows: end
+		Example		end
+		>>use Bank end
+		mount end
+10)db end
+	To check your currently selected database, use the command db end
+	Example end
+	>>db end
+	Bank end
+11)rm db db_name end
+	remove the database       (imcomplate) end
+	Example end  
+	>>rm db db_name end 
+	imcomplate output; end
+12)rm db all end
+	remove all databases end
+	Example end
+	>>rm db all end
+	incomplate end
+13)insert collection_name {attribute1:value1,attribute2:value2,attribute3:value3} end
+	collection is automatically created  and record is stored in collection end
+	Example end
+	>>insert Teacher {name:suresh,add:pune,salary:50000} end
+	content in the file look like end
+	name	add	salary	end
+	suresh	pune	50000		end
+	>>insert Teacher {name:ramesh,add:latur,salary:60000} end
+	content in the file look like end
+	name	add	salary	 end
+	suresh	 pune	50000	end
+	ramesh latur	60000 end
+14)show c end
+	Display all collection in the switched database end
+	Example end
+	>>show c end
+	village end
+	school end
+	Teacher end
+15)select collection_name * end
+	dispaly the all content of collection end
+	Example end
+	>>select teacher * end
+	name	add	salary	 end
+	suresh	 pune	50000	 end
+	ramesh latur	60000 end
+16)rm c collection_name end
+	remove the collection from the swiched collection end
+	Example end
+	>>rm c Teacher end
+	Teacher collection deleted successfully. end end
+17)rm c all end
+	Remove the all collection from the swiched collection [need to login for security  purpose] end
+	Example end
+	>>rm  c all end
+	>rm c all end
+	enter the  username:fergusson end
+
+	enter the password: end
+	connection establised succesfully end
+	Removed Successfully  end
+18)find collection_name value_to_search end
+	find the value in the collection end
+	Example end
+	>>find  Teacher  suresh end
+	suresh   pune 50000 end
+19)find collection_name value_to_search limit end
+	find the limited  value in the collection end
+	Example end
+	>>find  Teacher  suresh 1 end
+	suresh   pune 50000 end
+20)count collection_name end
+	Count of the record in the collection end
+	Example end
+	>>count teacher end
+	3 end end
+
+21)h end
+	check the command history end
+	Example end
+	>>h end
+	h end
+	rm c all end
+	rm c Teacher end
+	select Teacher * end
+	show c	end
+	connect end
+22)c end
+	check the last command end
+	Example end
+	>>c end
+	h end end
+23)c n end
+	check last n command end
+	Example end
+	>>c 4 end
+	h end
+           c end
+          rm c all end
+          rm c  Teacher end end
+24)r all end
+ 	clear the history end
+	Example end
+	>>r all end
+ 	clear history end
+25)r  end
+	remove the last command from history end
+	Example end
+	>>r end
+	r all removed from history end end

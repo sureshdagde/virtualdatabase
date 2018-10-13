@@ -14,13 +14,22 @@
 #include "RemoveCollection.h"
 #include "RemoveCollectionAll.h"
 #include "RemoveDatabase.h"
-#include "RemoveDatabaseAll.h"
 #include "connect.h"
 #include "CreteLogin.h"
 #include "ChangeLogin.h"
 #include "help.h"
 #include "NextPre.h"
 #include "insert.h"
+#include "SelectAll.h"
+#include "find.h"
+#include "count.h"
+#include "HelpSpecific.h"
+#include "findcondition.h"
+#include "delete.h"
+#include "insert_value.h"
+#define ANSI_COLOR_RED "\x1b[31m"
+#define ANSI_COLOR_GREEN "\x1b[32m"
+#define ANSI_COLOR_BLUE "\x1b[34m"
 int CreateTable(char [][233],int,char []);
 void Insert(char cmdword[][233],int CommandWordLength)
 {
@@ -29,7 +38,7 @@ void Insert(char cmdword[][233],int CommandWordLength)
 int main()
 {	
 	FILE *fp;
-	fp=fopen("/home/suresh/Desktop/searcer/Database/login.txt","a+");
+	fp=fopen("/home/suresh/Desktop/searcer/system/login.txt","a+");
 		int check1=fgetc(fp);
 		int check2=fgetc(fp);
 		int ccl=0;
@@ -56,13 +65,14 @@ int main()
 		int c,i=0,CommandWordLength=0,k=0,flag=1;
 		char cmd[22222]={0};
 		char cmdword[233][233]={0};
-		printf("\n>>");
+		printf(ANSI_COLOR_RED "\n>>");
+		printf(ANSI_COLOR_GREEN "");
 		gets(cmd);
 		push(theStack,cmd);
 		//printf("%u\n",strlen(cmd));
 
 		//show(theStack);
-		
+		printf(ANSI_COLOR_BLUE "");
 		while(i<strlen(cmd))
 		{
 			if(cmd[i]==' ')//connect  
@@ -115,9 +125,146 @@ int main()
 					printf("invalid command   [space is not allowed]or[Empty data]");
 				}
 			}
+			else if(!strcmp(cmdword[0],"insert_value"))
+			{
+				if(connect)
+				{
+					if(!strcmp(mount,"unmount"))
+					{
+						printf("please mount database first");
+					}
+					else if(CheckCollection(mount,cmdword[1]))
+					{
+					insert_value(mount,cmdword[1],cmdword[2]);
+					}
+					else
+					{
+						printf("collection not found");
+					//CreateTable(cmdword,CommandWordLength,mount);
+					}
+				}
+				else
+				{
+					printf("connection not establised");
+				}
+			}
+			else if(!strcmp(cmdword[0],"select") && !strcmp(cmdword[2],"*"))
+			{
+				if(connect)
+				{
+					if(!strcmp(mount,"unmount"))
+					{
+						printf("please mount database first");
+					}
+					else if(CheckCollection(mount,cmdword[1]))
+					{
+					SelectAll(mount,cmdword[1]);
+					}
+					else
+					{
+						printf("collection not found");
+					//CreateTable(cmdword,CommandWordLength,mount);
+					}
+				}
+				else
+				{
+					printf("connection not establised");
+				}
+			}
 
-
-
+		else if(!strcmp(cmdword[0],"count"))
+		{
+			if(connect)
+					{
+						if(!strcmp(mount,"unmount"))
+						{
+							printf("please mount database first");
+						}
+						else if(CheckCollection(mount,cmdword[1]))
+						{
+						count(mount,cmdword[1]);
+						}
+						else
+						{
+							printf("collection not found");
+							//CreateTable(cmdword,CommandWordLength,mount);
+						}
+					}
+					else
+					{
+						printf("connection not establised");
+					}
+		}
+		else if(!strcmp(cmdword[0],"delete") && CommandWordLength==2 && strlen(cmdword[1])>0)
+		{
+			if(connect)
+					{
+						if(!strcmp(mount,"unmount"))
+						{
+							printf("please mount database first");
+						}
+						else
+						{
+							deletecondition(cmdword[1],mount,cmdword[2]);
+						}
+					}
+					else
+					{
+						printf("connection not establised");
+					}
+			
+		}
+		else if(!strcmp(cmdword[0],"finds") && CommandWordLength==2 && strlen(cmdword[1])>0)
+		{
+			if(connect)
+					{
+						if(!strcmp(mount,"unmount"))
+						{
+							printf("please mount database first");
+						}
+						else
+						{
+							findcondition(cmdword[1],mount,cmdword[2]);
+						}
+					}
+					else
+					{
+						printf("connection not establised");
+					}
+			
+		}
+		else if(!strcmp(cmdword[0],"find")  && CommandWordLength<=3)
+				{
+					if(connect)
+					{
+						if(!strcmp(mount,"unmount"))
+						{
+							printf("please mount database first");
+						}
+						else if(CheckCollection(mount,cmdword[1]))
+						{
+							//printf("%s",cmdword[3]);
+							if(CommandWordLength==2)
+							{
+								findall(mount,cmdword[1],cmdword[2],"1000");	
+							}
+							else
+							{
+								findall(mount,cmdword[1],cmdword[2],cmdword[3]);		
+							}
+						
+						}
+						else
+						{
+							printf("collection not found");
+							//CreateTable(cmdword,CommandWordLength,mount);
+						}
+					}
+					else
+					{
+						printf("connection not establised");
+					}
+			}
 
 	   else if(!strcmp(cmdword[0],"r") && CommandWordLength==0)
 		{
@@ -146,8 +293,11 @@ int main()
 		//check the previous command
 		else if(!strcmp(cmdword[0],"c") && CommandWordLength==0)
 		{
-			
+		//	int ddd=CheckNULL(theStack);
+		//	if(dd!=1)
 			printf("%s",catchdata(theStack));
+		//	else
+		//		pritnf("no command found");
 		}
 		//c n---------->print the Number of current command
 		else if( !strcmp(cmdword[0],"c") && !strcmp(cmdword[1],"n") && CommandWordLength==1)
@@ -196,6 +346,7 @@ int main()
 				if(login)
 				{
 				connect =0;
+				printf("disconnected");
 				}
 				else
 				{
@@ -224,6 +375,11 @@ int main()
 			{
 
 				help();
+			}
+		else if(!strcmp(cmdword[0],"help") && CommandWordLength==1)
+			{
+
+				HelpSpecific(cmdword[1]);
 			}
 		else if(!strcmp(cmdword[0],"create") && !strcmp(cmdword[1],"db") && 
 			strcmp(cmdword[2],";") && CommandWordLength==2)
@@ -296,6 +452,24 @@ int main()
 					printf("connection not establised");
 				}
 			}
+			else if(!strcmp(cmdword[0],"db") &&  CommandWordLength==0)
+			{
+				if(connect)
+				{
+					if(!strcmp(mount,"unmount"))
+					{
+						printf("please mount database first");
+					}
+					else
+					{
+						printf("%s",mount);
+					}
+				}
+				else
+				{
+					printf("connection not establised");
+				}
+			}
 			//create the new collection in current collection 
 		else if(!strcmp(cmdword[0],"create")  && !strcmp(cmdword[1],"c"))
 			{
@@ -359,7 +533,8 @@ int main()
 				}
 				else
 				{
-					RemoveCollectionAll(mount);
+
+				//	RemoveCollectionAll(mount);
 				}
 			}
 
@@ -368,7 +543,10 @@ int main()
 			{
 				
 					ConnectDB();
-					RemoveDatabase(cmdword[2]);
+					char path[100]="/home/suresh/Desktop/searcer/Database/";
+					strcat(path,cmdword[2]);
+					//printf("%s\n",path);
+					remove_directory(path);
 				
 			}
 			//remove all collection 	PAINDDING 
@@ -376,13 +554,15 @@ int main()
 			{
 				
 					ConnectDB();
-				RemoveDatabaseAll();
+
+					char path[100]="/home/suresh/Desktop/searcer/Database/";
+				remove_directory(path);
 			}
 			//exit from searcer
 		else if(!strcmp(cmdword[0],"exit")&& CommandWordLength==0)
 			{
 				
-				exit(0);
+				exit(1);
 			}
 		else
 		{

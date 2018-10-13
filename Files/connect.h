@@ -2,15 +2,16 @@ int ConnectDB()
 {
 	char zero[20];
 	char username[20];
-	char password[20];
 	char oldusername[20];
 	char oldpassword[20];
-	printf("enter the  username--->\n");
+	int i;
+	char ch;
+	printf("enter the  username:");
 	gets(username);
-	printf("enter the password--->\n");
-	gets(password);
+	printf("\nenter the password:");
+	char *password=getpass("");
 	FILE *fp;
-	fp=fopen("/home/suresh/Desktop/searcer/Database/login.txt","r+");
+	fp=fopen("/home/suresh/Desktop/searcer/system/login.txt","r+");
 	if(fp==NULL)
 	{
 		printf("could not open");
@@ -28,3 +29,39 @@ printf("could not connect");
  return 0;
 
 }
+
+/*
+#define Enter 13
+#define Space 32
+#define Tab 9
+#define BKSP 8
+
+while(1)
+		{
+			ch=getch();
+			if(ch==Enter)
+			{
+				password[i]='\0';
+				break;
+			}
+			else if(ch==Tab || ch==Space)
+			{
+				continue;
+			}
+			else if (ch==BKSP)
+			{
+				if(i>0)
+				{
+					i--;
+					printf("\b \b");
+				}
+
+			}
+			else
+			{
+				password[i]=ch;
+				i++;
+				printf("*");
+			}
+		}
+	*/
