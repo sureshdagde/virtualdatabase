@@ -1,0 +1,6 @@
+0	
+3	
+name	add	age	;
+suresh	pune	22	;
+ramesh	mumbai	23	;
+sachinp	baramati	25	;

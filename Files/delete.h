@@ -263,6 +263,7 @@ else
 								newj++;
 
 								}
+								//record[i][newj][strlen(record[i][newj])]='\0';
 								fprintf(fp2, "%s",";" );
 								fprintf(fp2, "%s","\n" );
 						}
@@ -270,8 +271,9 @@ else
 		}
 	}
 	fprintf(fp2, "%s","end" );
-	fclose(fp);
 	fclose(fp2);
+	fclose(fp);
+	
 	fp=fopen(path,"w");
 	fp2=fopen("/home/suresh/Desktop/searcer/system/delete.txt","r");
 //char s[10];
@@ -290,6 +292,7 @@ else
 	
 	}
 	fclose(fp);
+	fp2=fopen("/home/suresh/Desktop/searcer/system/delete.txt","w");
 	fclose(fp2);
 }
 /*

@@ -1,0 +1,8 @@
+0	
+3	
+name	add	name	add	name	add	age	;
+suresh	pune	23	;
+ramesh	dane	34	;
+sachin	mumbai	22	;
+umesh	sangali	33	;
+ramesh	satara	35	;

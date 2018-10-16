@@ -1,0 +1,9 @@
+0	
+3	
+name	name	add	age	;
+suresh	pune	22	;
+ramesh	dane	23	;
+sachin	satara	22	;
+suresh	latur	23	;
+ramesh	vasaii	32	;
+pareshn	danera	22	;

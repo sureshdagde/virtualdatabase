@@ -1,0 +1,7 @@
+0	
+3	
+name	add	name	add	age	;
+sachin	mumbai	23	;
+mahesh	daneai	24	;
+suresh	satara	25	;
+pavanh	vashim	22	;

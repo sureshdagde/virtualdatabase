@@ -6,8 +6,23 @@
 > show dbs : used to show the all list of database ;
 > use db Database_Name : used to mount(select) the database;
 > show c : used to show all list of collection in current database but need to mount database ;	
+> insert collection_name {attribute:value,attribute:value,.....} : create collection and insert_ value into collection ;
+> insert_value collection_name {value,value} : insert_ value into collection [Note:but need to collection created already];
+> find collection_name search_content : search specified value in the specified collection ;
+> finds collection_name {attribute1 : value1,attribute2:value2------}[',' represent 'and'] :search value by specified condition ;
+> finds collection_name {attribute1 : value1|attribute2:value2------}['|' represent 'or'] :search value by specified condition ;
+> delete student {attribute1:value1 ,or| attribute2:value2,....} : remove the record from the specified collection ;
+> count collection_name : count_ the number of record in the collection ;
 > rm db database_name : used to remove database ;
-> rm all db database_name : used to all remove database ;
+> rm db all : used to all remove database ;
 > rm c collection_name : used to remove collection ;
-> rm c all collection_name : used to remove all collection ;
+> rm c all : used to remove all collection in the current mounted database ;
 > exit : used to exit ;
+> db : check the current working database ;
+> help command : help for specific command ;
+> r : remove current command from the history ;
+> r all :  remove all commands from history ;
+> c : chek the current command ;
+> h : all history ;
+> select collection_name * : select all record from the specified collection ;
+> 

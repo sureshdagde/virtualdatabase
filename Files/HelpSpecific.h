@@ -1,7 +1,7 @@
 void HelpSpecific(char search[])
 {
 	FILE *fp;
-	char s[20],c;
+	char s[60],c;
 	int back=strlen(search);
 	back+=1;
 	fp=fopen("/home/suresh/Desktop/searcer/login/help.txt","r");

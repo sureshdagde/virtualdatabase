@@ -26,7 +26,7 @@ insert_value(char db[],char collection[],char cmdword[])
 					}
 					i++;
 				}
-				printf("--------->%d\n",atoi(n));
+				//printf("--------->%d\n",atoi(n));
 				if(count==atoi(n))
 				{
 					fputc('\n',fp);
@@ -46,6 +46,7 @@ insert_value(char db[],char collection[],char cmdword[])
 						}
 						putc('\t',fp);
 						fputc(';',fp);
+						printf("Record inserted successfully");
 						
 				}
 				else if(count<atoi(n))
